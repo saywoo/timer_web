@@ -1,3 +1,18 @@
-<body>
-    <h1>테스트</h1>
-</body>
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <title>presentation helper</title>
+        <script>
+            function char_count() {
+                document.getElementById('char_count_results').value = 
+                document.getElementById('textbox').value.length;
+            }
+        </script>
+    </head>
+    <body>
+        <textarea id="textbox" style="resize:none;border:none" placeholder="텍스트를 입력하세요." 
+        onkeydown="char_count()" onkeypress="char_count()" onkeyup="char_count()"></textarea> 
+        글자 수: <input type="number" id="char_count_results" value="0" style="border:none" readonly>자
+    </body>
+</html>
