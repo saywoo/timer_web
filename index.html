@@ -10,6 +10,7 @@
 <html lang="ko">
     <head>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>presentation helper</title>
         <link rel="stylesheet" href="style.css">
         <script type="text/javascript" src="scripts.js"></script>
@@ -17,6 +18,6 @@
     <body>
         <textarea id="textbox" style="resize:none;border:none" placeholder="여기에 스크립트를 입력하세요." 
         onkeydown="char_count();resize(this)" onkeypress="char_count()" onkeyup="char_count();resize(this)"></textarea> 
-        글자 수: <input type="number" id="char_count_results" value="0" style="border:none; width:5%;" readonly>자
+        글자 수: <input type="number" id="char_count_results" value="0" style="border:none; width:3em;" readonly>자
     </body>
 </html>
