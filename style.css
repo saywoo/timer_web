@@ -1,7 +1,26 @@
+@font-face {
+ font-family: 'NanumBarunGothic';
+ font-style: normal;
+ font-weight: 400;
+ src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot');
+ src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype');
+}
+
 textarea {
-    width:100%;
+    font-family: 'NanumBarunGothic';
+    width:80%;
     min-height: 5rem;
     overflow-y: hidden;
     resize: none;
-    font-size:16px;
+    font-size:1.5vw;
+    align-items:center;
+}
+
+span {
+    font-family: 'NanumBarunGothic';
+    font-size:1.3vw;
+}
+
+h6 {
+    font-size:0.2vw;
 }
