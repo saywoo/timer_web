@@ -1,18 +1,22 @@
 <!DOCTYPE html>
+<!--
+    2021/06/18 현재 구현 상황
+    반응형 textbox 구현 완료
+
+    todo
+    전 기기에서 작동하는 반응형 웹 기초 세팅하기
+    텍스트 길이에 기반해서 발표의 예상 시간을 알려주는 텍스트 오브젝트 추가하기
+-->
 <html lang="ko">
     <head>
         <meta charset="utf-8">
         <title>presentation helper</title>
-        <script>
-            function char_count() {
-                document.getElementById('char_count_results').value = 
-                document.getElementById('textbox').value.length;
-            }
-        </script>
+        <link rel="stylesheet" href="style.css">
+        <script type="text/javascript" src="scripts.js"></script>
     </head>
     <body>
-        <textarea id="textbox" style="resize:none;border:none" placeholder="텍스트를 입력하세요." 
-        onkeydown="char_count()" onkeypress="char_count()" onkeyup="char_count()"></textarea> 
-        글자 수: <input type="number" id="char_count_results" value="0" style="border:none" readonly>자
+        <textarea id="textbox" style="resize:none;border:none" placeholder="여기에 스크립트를 입력하세요." 
+        onkeydown="char_count();resize(this)" onkeypress="char_count()" onkeyup="char_count();resize(this)"></textarea> 
+        글자 수: <input type="number" id="char_count_results" value="0" style="border:none; width:5%;" readonly>자
     </body>
 </html>
