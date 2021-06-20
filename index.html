@@ -8,6 +8,7 @@
     텍스트 길이에 기반해서 발표의 예상 시간을 알려주는 텍스트 오브젝트 추가하기
 -->
 <html lang="ko">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,13 +17,20 @@
         <script type="text/javascript" src="scripts.js"></script>
     </head>
     <body>
-        <textarea id="textbox" style="resize:none;border:none" placeholder="여기에 스크립트를 입력하세요." 
-        onkeydown="char_count();resize(this)" onkeypress="char_count()" onkeyup="char_count();resize(this)"></textarea> 
-        <h6></h6>
-        <span>
-            글자 수:
-            <input type="text" id="char_count_results" value="0" style="width:5vw; border:none; font-size:12px" maxlength="6" disabled>
-            자
-        </span>
+        <form class="w3-container w3-card-1 w3-margin">
+            <textarea class="w3-center w3-input w3-border w3-round-large" id="textbox" style="resize:none;border:none" placeholder="여기에 스크립트를 입력하세요." 
+            onkeydown="char_count();resize(this)" onkeypress="char_count()" onkeyup="char_count();resize(this)"></textarea> 
+            <h6></h6>
+            <div class="w3-container w3-center" id="type_num_bar">
+                <span>글자 수:</span>
+                <span id="char_count_results" style="width:5vw; border:none; font-size:2vmax">0</span>
+                <span>자</span>
+            </div>
+            <div class="w3-container w3-center" id="time_count_bar">
+                <span>예상 시간:</span>
+                <span id="time_results" style="width:5vw; border:none; font-size:2vmax">0</span>
+                <span>초</span>
+            </div>
+        </form>
     </body>
 </html>

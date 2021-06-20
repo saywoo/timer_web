@@ -12,14 +12,15 @@ textarea {
     min-height: 5rem;
     overflow-y: hidden;
     resize: none;
-    font-size:15px;
+    font-size:1.5vmax;
 }
 
 span {
     font-family: 'NanumBarunGothic';
-    font-size:12px;
+    font-size:2vmax;
+    white-space:nowrap;
 }
 
 h6 {
-    font-size:12px;
+    font-size:0.5vmax;
 }

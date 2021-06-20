@@ -1,5 +1,5 @@
 function char_count() {
-    document.getElementById('char_count_results').value = document.getElementById('textbox').value.length;
+    document.getElementById('char_count_results').innerText = document.getElementById('textbox').value.length;
 }
 function resize(obj) {
     obj.style.height = '1px';
