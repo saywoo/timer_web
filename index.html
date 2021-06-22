@@ -9,6 +9,11 @@
 -->
 <html lang="ko">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,17 +22,23 @@
         <script type="text/javascript" src="scripts.js"></script>
     </head>
     <body>
-        <form class="w3-container w3-card-1 w3-margin">
-            <textarea class="w3-center w3-input w3-border w3-round-large" id="textbox" style="resize:none;border:none" placeholder="여기에 스크립트를 입력하세요." 
-            onkeydown="char_count();resize(this)" onkeypress="char_count()" onkeyup="char_count();resize(this)"></textarea> 
-            <h6></h6>
-            <div class="w3-container w3-left" style="margin-left:2em;" id="type_num_bar">
-                <span>글자 수:</span>
-                <span id="char_count_results" style="width:5vw; border:none; font-size:2vmax">0자</span>
+        <h1 class="container">발표 시간 측정기</h1>
+        <div class="container">
+            <div class="form-group">
+                <textarea class="form-control rounded-1" id="textbox" style="width:100%;text-align:center;" rows="15" placeholder="여기에 스크립트를 입력하세요." 
+                onkeydown="char_count();resize(this)" onkeypress="char_count()" onkeyup="char_count();resize(this)"></textarea> 
+                <h6></h6>
+                <button class="btn btn-lg btn-block" type="button">확인</button>
             </div>
-            <div class="w3-container w3-right" style="margin-right:2em;" id="time_count_bar">
-                <span>예상 시간:</span>
-                <span id="time_results" style="width:5vw; border:none; font-size:2vmax">0초</span>
+            <div class="container">
+                <div class="w3-container w3-left" style="margin-left:8em;" id="type_num_bar">
+                    <span class="w3-left-align">글자 수:</span>
+                    <span class="w3-left-align" id="char_count_results" style="width:10vw; border:none;">0자</span>
+                </div>
+                <div class="w3-container w3-right" style="margin-right:8em;" id="time_count_bar">
+                    <span class="w3-left-align">예상 시간:</span>
+                    <span class="w3-left-align" id="time_results" style="width:10vw; border:none;">0초</span>
+                </div>
             </div>
         </form>
     </body>
