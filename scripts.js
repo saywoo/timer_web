@@ -16,6 +16,7 @@ function char_count() {
     var char_cnt = document.getElementById('textbox').value.length;
     document.getElementById('time_results').innerText = time_for_speech(char_cnt);
     document.getElementById('char_count_results').innerText = char_cnt + "자";
+    document.getElementById("real_char_count_results").innerText = document.getElementById('textbox').value.replace(/(\s*)/g, "").length + "자";
 }
 function resize(obj) {
     obj.style.height = '1px';

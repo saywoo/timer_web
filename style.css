@@ -21,3 +21,7 @@ textarea {
 span {
     white-space:nowrap;
 }
+
+th {
+    text-align:center;
+}

@@ -22,7 +22,26 @@
         <script type="text/javascript" src="scripts.js"></script>
     </head>
     <body>
-        <h1 class="container">발표 시간 측정기</h1>
+        <h1 class="container" style="text-align:center">발표 시간 측정기</h1>
+
+        <div class="container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">글자 수</th>
+                        <th scope="col">발음 가능 글자 수</th>
+                        <th scope="col">단어 수</th>
+                        <th scope="col">바이트</th>
+                    </tr>
+                </thead>
+                <tr>
+                    <th id="char_count_results">0자</th>
+                    <th id="real_char_count_results">0자</th>
+                    <th id="word_count_results">0단어</th>
+                    <th id="byte_count_results">0바이트</th>
+                </tr>
+            </table>
+        </div>
         <div class="container">
             <div class="form-group">
                 <textarea class="form-control rounded-1" id="textbox" style="width:100%;text-align:center;" rows="15" placeholder="여기에 스크립트를 입력하세요." 
@@ -31,15 +50,11 @@
                 <button class="btn btn-lg btn-block" type="button">확인</button>
             </div>
             <div class="container">
-                <div class="w3-container w3-left" style="margin-left:8em;" id="type_num_bar">
-                    <span class="w3-left-align">글자 수:</span>
-                    <span class="w3-left-align" id="char_count_results" style="width:10vw; border:none;">0자</span>
-                </div>
                 <div class="w3-container w3-right" style="margin-right:8em;" id="time_count_bar">
                     <span class="w3-left-align">예상 시간:</span>
                     <span class="w3-left-align" id="time_results" style="width:10vw; border:none;">0초</span>
                 </div>
             </div>
-        </form>
+        </div>
     </body>
 </html>
