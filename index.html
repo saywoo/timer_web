@@ -7,7 +7,7 @@
     전 기기에서 작동하는 반응형 웹 기초 세팅하기
     텍스트 길이에 기반해서 발표의 예상 시간을 알려주는 텍스트 오브젝트 추가하기
 -->
-<html lang="ko">
+<html lang="ko" class="h-100">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
@@ -21,40 +21,43 @@
         <link rel="stylesheet" href="style.css">
         <script type="text/javascript" src="scripts.js"></script>
     </head>
-    <body>
-        <h1 class="container" style="text-align:center">발표 시간 측정기</h1>
-        <h2></h2>
-        <div class="container">
-            <table class="table">
-                <thead>
+    <body class="d-flex h-100">
+        <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+            <h1 class="container" style="text-align:center">발표 시간 측정기</h1>
+            <h2></h2>
+            <div class="container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">글자 수</th>
+                            <th scope="col">단어 수</th>
+                            <th scope="col">바이트</th>
+                        </tr>
+                    </thead>
                     <tr>
-                        <th scope="col">글자 수</th>
-                        <th scope="col">단어 수</th>
-                        <th scope="col">바이트</th>
+                        <th id="char_count_results">0자</th>
+                        <th id="word_count_results">0단어</th>
+                        <th id="byte_count_results">0바이트</th>
                     </tr>
-                </thead>
-                <tr>
-                    <th id="char_count_results">0자</th>
-                    <th id="word_count_results">0단어</th>
-                    <th id="byte_count_results">0바이트</th>
-                </tr>
-            </table>
-        </div>
-        <div class="container">
-            <div class="form-group">
-                <textarea class="form-control rounded-1" id="textbox" style="width:100%;text-align:center;" rows="15" placeholder="여기에 스크립트를 입력하세요." 
-                onkeydown="char_count();resize(this)" onkeypress="char_count()" onkeyup="char_count();resize(this)"></textarea> 
-                <h6></h6>
-                <button class="btn btn-lg btn-secondary fw-bold btn-block" type="button">확인</button>
+                </table>
             </div>
             <div class="container">
-                <div class="w3-container w3-right" style="margin-right:8em;" id="time_count_bar">
-                    <span class="w3-left-align">예상 시간:</span>
-                    <span class="w3-left-align" id="time_results" style="width:10vw; border:none;">0초</span>
+                <div class="form-group">
+                    <textarea class="form-control rounded-1" id="textbox" style="width:100%;text-align:center;" rows="15" placeholder="여기에 스크립트를 입력하세요." 
+                    onkeydown="char_count();resize(this)" onkeypress="char_count()" onkeyup="char_count();resize(this)"></textarea> 
+                    <h6></h6>
+                    <a class="btn btn-lg btn-block $btn-hover-bg-shade-amount:0%" style="color: rgb(255, 255, 255);
+    text-shadow: none; background-color: rgb(110, 110, 110)!important; border-color: rgb(110, 110, 110)!important;" type="button">확인</a>
+                </div>
+                <div class="container">
+                    <div class="w3-container w3-right" style="margin-right:8em;" id="time_count_bar">
+                        <span class="w3-left-align">예상 시간:</span>
+                        <span class="w3-left-align" id="time_results" style="width:10vw; border:none;">0초</span>
+                    </div>
                 </div>
             </div>
+            <div class="words"></div>
+            <script src="voice.js"></script>
         </div>
-        <div class="words"></div>
-        <script src="voice.js"></script>
     </body>
 </html>
