@@ -41,6 +41,7 @@ recognition.addEventListener("result", (e) => {
 
 function Clean_text() {
     document.getElementById('para').innerText = "";
+    speechToText = "";
 }
 
 // 음성인식이 끝나면 자동으로 재시작합니다.
