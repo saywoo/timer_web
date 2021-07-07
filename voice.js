@@ -43,4 +43,4 @@ recognition.addEventListener("result", (e) => {
 // recognition.addEventListener("end", recognition.start);
 
 // 음성 인식 시작
-recognition.start();
+//recognition.start();
