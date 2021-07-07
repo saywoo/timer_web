@@ -8,5 +8,6 @@
 
 사용한 API, 플러그인, 폰트
 1. bootstrap (https://getbootstrap.com/)
-2. web speech API (https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API)
-3. 사용 폰트: 바른나눔고딕 (https://hangeul.naver.com/font)
+2. Jquery (https://jquery.com/)
+3. web speech API (https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API)
+4. 사용 폰트: 바른나눔고딕 (https://hangeul.naver.com/font)
