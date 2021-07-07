@@ -22,10 +22,11 @@ let words = document.querySelector(".words");
 words.appendChild(p);
 
 let speechToText = "";
+let interimTranscript = "";
 recognition.addEventListener("result", (e) => {
     document.querySelector(".para").innerHTML = e.results[0][0].transcript;
     
-    let interimTranscript = "";
+    interimTranscript = "";
     for (let i = e.resultIndex, len = e.results.length; i < len; i++) {
         let transcript = e.results[i][0].transcript;
         console.log(transcript);
@@ -36,11 +37,33 @@ recognition.addEventListener("result", (e) => {
         }
     }
     document.querySelector(".para").innerHTML = speechToText + interimTranscript;
-    
 });
+
+let str = document.getElementById('temptext').value;
+let str_cnt = str.length; // 공백 포함 글자 수
+
+function cal(res) {
+    const final_res = parseInt(60000 / (res / str_cnt));
+    document.getElementById('time_results').innerText = "1분당 " + final_res.toString() + "글자";
+}
 
 // 음성인식이 끝나면 자동으로 재시작합니다.
 // recognition.addEventListener("end", recognition.start);
+
+let st = 0; let en = 0;
+recognition.addEventListener("start", () => {
+    st = new Date();
+    console.log("sans");
+    $("#start_button").toggle();
+    $("#end_button").toggle();
+});
+function endSpeech() {
+    en = new Date();
+    cal(en - st); 
+    console.log(en - st);
+    $("#start_button").toggle();
+    $("#end_button").toggle();
+};
 
 // 음성 인식 시작
 //recognition.start();
