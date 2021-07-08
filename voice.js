@@ -1,7 +1,6 @@
 window.SpeechRecognition =
     window.SpeechRecognition || window.webkitSpeechRecognition;
 
-// 인스턴스 생성
 const recognition = new SpeechRecognition();
 let st = 0; let en = 0;
 
@@ -12,7 +11,6 @@ let str_cnt = str.length; // 공백 포함 글자 수
 recognition.interimResults = true;
 // 값이 없으면 HTML의 <html lang="en">을 참고합니다. ko-KR, en-US
 recognition.lang = "ko-KR";
-// true means continuous, and false means not continuous (single result each time.)
 // true면 음성 인식이 안 끝나고 계속 됩니다.
 recognition.continuous = false;
 // 숫자가 작을수록 발음대로 적고, 크면 문장의 적합도에 따라 알맞은 단어로 대체합니다.
@@ -45,11 +43,11 @@ recognition.addEventListener("result", (e) => {
 
 function cal(res) {
     const final_res = parseInt(60000 / (res / str_cnt));
-    document.getElementById('time_results').innerText = "1분당 " + final_res.toString() + "글자";
+    console.log(final_res);
+    document.getElementById('time_results').innerText = time_for_speech(final_res);
 }
 
 // 음성인식이 끝나면 자동으로 재시작합니다.
-// recognition.addEventListener("end", recognition.start);
 
 
 recognition.addEventListener("start", () =>  {

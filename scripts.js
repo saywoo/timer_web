@@ -1,7 +1,10 @@
-function time_for_speech(char_cnt) {
-    const char_per_second = 4.5;
+function time_for_speech(res) {
+    var char_cnt = document.getElementById('textbox').value.replace(/(\s*)/g, "").length;
+    var char_per_second = res / 60;
     var sec = parseInt(char_cnt / char_per_second);
     var min = parseInt(sec / 60);
+
+    console.log(char_cnt);
     
     if (min.toString() == "0") {
         return sec.toString() + "초";
@@ -22,8 +25,6 @@ function byte_cnt(chr) {
 }
 
 function char_count() {
-    var char_cnt = document.getElementById('textbox').value.length;
-    document.getElementById('time_results').innerText = time_for_speech(char_cnt);
     document.getElementById('byte_count_results').innerText = byte_cnt(document.getElementById('textbox').value);
     document.getElementById("char_count_results").innerText = document.getElementById('textbox').value.replace(/(\s*)/g, "").length + "자";
 }
