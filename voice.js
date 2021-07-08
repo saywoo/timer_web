@@ -94,7 +94,7 @@ recognition.addEventListener("end", () => {
 recognition.addEventListener("start", () =>  {
     st = new Date();
     console.log("인식 시작");
-    document.getElementById('end_button').style.visibility = 'block';
+    document.getElementById('end_button').style.visibility = 'visible';
     $("#start_button").toggle();
     $("#end_button").toggle();
     $("#loader").toggle();
