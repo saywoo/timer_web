@@ -55,13 +55,13 @@ recognition.addEventListener("start", () =>  {
     console.log("sans");
     $("#start_button").toggle();
     $("#end_button").toggle();
+    $("#loader").toggle();
 });
 function endSpeech() {
     en = new Date();
     cal(en - st); 
     console.log(en - st);
     $("#start_button").toggle();
-    $("#end_button").toggle();
 };
 
 // 음성 인식 시작

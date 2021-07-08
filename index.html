@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <!--
     2021/07/08 구현상황
-
-    
 -->
 <html lang="ko" class="h-100">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous"> 
@@ -41,43 +39,58 @@
                     onkeydown="char_count();resize(this)" onkeypress="char_count()" onkeyup="char_count();resize(this)"></textarea> 
                     <h6></h6>
                     <button class="btn btn-lg btn-block $btn-hover-bg-shade-amount:0%" style="color: rgb(255, 255, 255);
-    text-shadow: none; background-color: rgb(110, 110, 110)!important; border-color: rgb(110, 110, 110)!important;" type="button" data-toggle="modal" data-target="#exampleModalCenter" onclick="$('#end_button').toggle();">확인</button>
+    text-shadow: none; background-color: rgb(110, 110, 110)!important; border-color: rgb(110, 110, 110)!important;" type="button" data-toggle="modal" data-target="#exampleModalCenter" onclick="$('#end_button').toggle(); $('#loader').toggle();">확인</button>
                 </div>
                 <div class="container">
-                    <div style="margin-right:8em;" id="time_count_bar">
+                    <div id="time_count_bar">
                         <span class="w3-left-align">예상 시간:</span>
                         <span class="w3-left-align" id="time_results" style="width:10vw; border:none;">0초</span>
                     </div>
                 </div>
             </div>
-            <!--modal-->
-                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLongTitle" style="font-weight:bold;">음성 녹음</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <h4 style="font-weight:bold;">정확한 발표 예상시간을 위해 적혀진 문장을 마이크를 통해 읽어주세요.</h4>
-                                    <h5 id="temp_text"></h5>
-                                    <div class="words"></div>
-                                </div>
-                                <div class="modal-footer">
-                                    <script src="voice.js"></script>
-                                    <button type="button" id="start_button" class="btn $btn-hover-bg-shade-amount:0%" style="color: rgb(255, 255, 255);
-                                    text-shadow: none; background-color: rgb(70, 211, 89)!important; border-color: rgb(70, 211, 89)!important;" onclick="recognition.start();">시작</button>
-                                    <button type="button" id="end_button" class="btn $btn-hover-bg-shade-amount:0%" style="color: rgb(255, 255, 255); 
-                                    text-shadow: none; background-color: rgb(211, 70, 70)!important; border-color: rgb(211, 70, 70)!important;" onclick="endSpeech()">종료</button>
-                                    <button type="button" class="btn $btn-hover-bg-shade-amount:0%" style="color: rgb(255, 255, 255);
-                                    text-shadow: none; background-color: rgb(110, 110, 110)!important; border-color: rgb(110, 110, 110)!important;" data-dismiss="modal">취소</button>
-                                </div>
-                            </div>
-                        </div>
+        </div>
+        <!--modal-->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle" style="font-weight:bold;">음성 녹음</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h4 style="font-weight:bold;">정확한 발표 예상시간을 위해 적혀진 문장을 마이크를 통해 읽어주세요.</h4>
+                        <h5 id="temp_text">(여기에 텍스트 입력)</h5>
+                        <div class="words"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <script src="voice.js"></script>
+                        <button type="button" id="start_button" class="btn $btn-hover-bg-shade-amount:0%"
+                            style="color: rgb(255, 255, 255);
+                                            text-shadow: none; background-color: rgb(70, 211, 89)!important; border-color: rgb(70, 211, 89)!important;" onclick="recognition.start();">시작</button>
+                        <button type="button" id="end_button" class="btn $btn-hover-bg-shade-amount:0%"
+                            style="color: rgb(255, 255, 255); 
+                                            text-shadow: none; background-color: rgb(211, 70, 70)!important; border-color: rgb(211, 70, 70)!important;" onclick="endSpeech();" data-dismiss="modal">종료</button>
+                        <button type="button" class="btn $btn-hover-bg-shade-amount:0%"
+                            style="color: rgb(255, 255, 255);
+                                            text-shadow: none; background-color: rgb(110, 110, 110)!important; border-color: rgb(110, 110, 110)!important;"
+                            data-dismiss="modal">취소</button>
                     </div>
                 </div>
+            </div>
+        </div>
+             <div class="container">
+                <p class="loader" id="loader"></p>
+                <div class="progress">
+                    <div class="progress-bar $progress-bar-color:$blue;" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0"
+                        aria-valuemax="100"></div>
+                    <div class="progress-bar $progress-bar-color:$green;" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0"
+                        aria-valuemax="100"></div>
+                    <div class="progress-bar $progress-bar-color:$red;" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0"
+                        aria-valuemax="100"></div>
+                </div>           
             </div>
         </div>
     </body>
