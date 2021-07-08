@@ -5,7 +5,7 @@ const recognition = new SpeechRecognition();
 let st = 0; let en = 0;
 var final_res;
 
-let str = "1";
+let str = "정확한 결과를 위해 정확한 발음으로 말해주세요.";
 let str_cnt = str.length; // 공백 포함 글자 수
 
 // true면 음절을 연속적으로 인식하나 false면 한 음절만 기록함
@@ -44,7 +44,7 @@ recognition.addEventListener("result", (e) => {
 });
 
 function cal(res) {
-    final_res = parseInt(60000 / (res / str_cnt)) + 30;
+    final_res = parseInt(60000 / (res / str_cnt));
     console.log(final_res);
     document.getElementById('time_results').innerText = time_for_speech(final_res);
 }
@@ -76,15 +76,15 @@ recognition.addEventListener("end", () => {
 
         if (final_res > 297) {
             document.getElementById("card_2_main").innerText = "말하기 속도가 빠른 편이에요.";
-            document.getElementById("card_2_sub").innerText = "1분에 약" + final_res.toString() + "자 정도 말할수 있는 속도에요.";
+            document.getElementById("card_2_sub").innerText = "1분에 약 " + final_res.toString() + "자 정도 말할수 있는 속도에요.";
         }
         else if (final_res < 243) {
             document.getElementById("card_2_main").innerText = "말하기 속도가 느린 편이에요.";
-            document.getElementById("card_2_sub").innerText = "1분에 약" + final_res.toString() + "자 정도 말할수 있는 속도에요.";
+            document.getElementById("card_2_sub").innerText = "1분에 약 " + final_res.toString() + "자 정도 말할수 있는 속도에요.";
         }
         else {
             document.getElementById("card_2_main").innerText = "말하기 속도가 적당해요.";
-            document.getElementById("card_2_sub").innerText = "1분에 약" + final_res.toString() + "자 정도 말할수 있는 속도에요.";
+            document.getElementById("card_2_sub").innerText = "1분에 약 " + final_res.toString() + "자 정도 말할수 있는 속도에요.";
         }
     }
     
@@ -94,7 +94,6 @@ recognition.addEventListener("end", () => {
 recognition.addEventListener("start", () =>  {
     st = new Date();
     console.log("인식 시작");
-    document.getElementById('end_button').style.visibility = 'visible';
     $("#start_button").toggle();
     $("#end_button").toggle();
     $("#loader").toggle();
