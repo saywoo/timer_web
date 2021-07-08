@@ -44,7 +44,7 @@ recognition.addEventListener("result", (e) => {
 });
 
 function cal(res) {
-    final_res = parseInt(60000 / (res / str_cnt));
+    final_res = parseInt(60000 / (res / str_cnt)) - 30;
     console.log(final_res);
     document.getElementById('time_results').innerText = time_for_speech(final_res);
 }
