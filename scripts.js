@@ -7,11 +7,11 @@ function time_for_speech(res) {
     console.log(char_cnt);
     
     if (min.toString() == "0") {
-        return sec.toString() + "초";
+        return "약 " + sec.toString() + "초";
     }
     else {
         var tmp_sec = sec - min * 60;
-        return min.toString() + "분 " + tmp_sec.toString() + "초";
+        return "약 " + min.toString() + "분 " + tmp_sec.toString() + "초";
     }
 }
 

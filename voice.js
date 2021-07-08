@@ -48,6 +48,9 @@ function cal(res) {
 }
 
 // 음성인식이 끝나면 자동으로 재시작합니다.
+recognition.addEventListener("end", () => {
+    $("#loader").toggle();
+});
 
 
 recognition.addEventListener("start", () =>  {
@@ -62,6 +65,8 @@ function endSpeech() {
     cal(en - st); 
     console.log(en - st);
     $("#start_button").toggle();
+    $("#st_btn").toggle();
+    document.getElementById('loader').innerText = "계산 중...";
 };
 
 // 음성 인식 시작
