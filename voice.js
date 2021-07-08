@@ -3,9 +3,9 @@ window.SpeechRecognition =
 
 const recognition = new SpeechRecognition();
 let st = 0; let en = 0;
-var final_res;
+var final_res = 0;
 
-let str = "정확한 결과를 위해 정확한 발음으로 말해주세요.";
+let str = "적혀진 문장을 마이크를 통해 읽어주세요.";
 let str_cnt = str.length; // 공백 포함 글자 수
 
 // true면 음절을 연속적으로 인식하나 false면 한 음절만 기록함
@@ -40,7 +40,6 @@ recognition.addEventListener("result", (e) => {
         }
     }
     document.querySelector(".para").innerHTML = speechToText + interimTranscript;
-
 });
 
 function cal(res) {
@@ -49,29 +48,47 @@ function cal(res) {
     document.getElementById('time_results').innerText = time_for_speech(final_res);
 }
 
-// 음성인식이 끝나면 자동으로 재시작합니다.
 recognition.addEventListener("end", () => {
     $("#loader").toggle();
+    document.getElementById("result_card").style.visibility = "visible";
 
     if (document.querySelector(".para").innerHTML == "") {
-        $("#loader").toggle();
-        document.getElementById("loader").innerText = "마이크를 인식하지 못했어요. 새로고침 후 다시 시도해주세요.";
+        //$("#loader").toggle();
+        //document.getElementById("loader").innerText = "마이크를 인식하지 못했어요. 새로고침 후 다시 시도해주세요.";
+        console.log("마이크 입력 안됨");
+        if (final_res > 297) {
+            document.getElementById("card_2_main").innerText = "말하기 속도가 빠른 편이에요.";
+            document.getElementById("card_2_sub").innerText = "1분에 약 " + final_res.toString() + "자 정도 말할수 있는 속도에요.";
+        }
+        else if (final_res < 243) {
+            document.getElementById("card_2_main").innerText = "말하기 속도가 느린 편이에요.";
+            document.getElementById("card_2_sub").innerText = "1분에 약 " + final_res.toString() + "자 정도 말할수 있는 속도에요.";
+        }
+        else {
+            document.getElementById("card_2_main").innerText = "말하기 속도가 적당해요.";
+            document.getElementById("card_2_sub").innerText = "1분에 약 " + final_res.toString() + "자 정도 말할수 있는 속도에요.";
+        }
+        document.getElementById("card_3_main").innerText = "발음을 제대로 인식하지 못했어요";
+        document.getElementById("card_3_sub").innerText = "새로고침 후 다시 시도해주세요";
+
     }
     else {
-        document.getElementById("result_card").style.visibility = "visible";
         console.log(document.querySelector(".para").innerHTML);
         let tmp = getDist(str, document.querySelector(".para").innerHTML);
         console.log(tmp);
-        var temp = parseInt(tmp / str_cnt * 100);
-        if (temp == 0) { temp = 100; tmp = 100000; }
+        var temp = parseInt((str_cnt - tmp) / str_cnt * 100);
+        if (0 == tmp) { temp = 100; tmp = 100000; }
 
-        if (parseInt(str_cnt / tmp) >= 2) {
+        if (temp <= 50) {
             document.getElementById("card_3_main").innerText = "발음이 부정확해요";
             document.getElementById("card_3_sub").innerText = "약 " + temp.toString() + "% 정도 정확히 발음했어요. 마이크가 문제가 있거나 말하는 소리가 작아서 부정확하게 결과가 나올 수 있어요."
+            document.getElementById("card_3_sub2").innerText = "인식한 발음은 " + document.querySelector(".para").innerHTML + " (이)에요.";
         }
         else {
             document.getElementById("card_3_main").innerText = "발음이 정확해요";
-            document.getElementById("card_3_sub").innerText = "약 " + temp.toString() + "% 정도 정확히 발음했어요. 발음이 정확한 편이에요."
+            document.getElementById("card_3_sub").innerText = "약 " + temp.toString() + "% 정도 정확히 발음했어요. 발음이 정확한 편이에요";
+            document.getElementById("card_3_sub2").innerText = "인식한 발음은 " + document.querySelector(".para").innerHTML + " (이)에요.";
+
         }
 
         if (final_res > 297) {
@@ -86,8 +103,7 @@ recognition.addEventListener("end", () => {
             document.getElementById("card_2_main").innerText = "말하기 속도가 적당해요.";
             document.getElementById("card_2_sub").innerText = "1분에 약 " + final_res.toString() + "자 정도 말할수 있는 속도에요.";
         }
-    }
-    
+    }   
 });
 
 
