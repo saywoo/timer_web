@@ -5,7 +5,7 @@ const recognition = new SpeechRecognition();
 let st = 0; let en = 0;
 var final_res;
 
-let str = "살찐 수댕이";
+let str = "1";
 let str_cnt = str.length; // 공백 포함 글자 수
 
 // true면 음절을 연속적으로 인식하나 false면 한 음절만 기록함
