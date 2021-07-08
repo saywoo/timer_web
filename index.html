@@ -1,11 +1,6 @@
 <!DOCTYPE html>
 <!--
-    2021/06/18 현재 구현 상황
-    반응형 textbox 구현 완료
-
-    todo
-    전 기기에서 작동하는 반응형 웹 기초 세팅하기
-    텍스트 길이에 기반해서 발표의 예상 시간을 알려주는 텍스트 오브젝트 추가하기
+    2021/07/08 구현상황
 -->
 <html lang="ko" class="h-100">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous"> 
@@ -67,11 +62,11 @@
                                     <h4 style="font-weight:bold;">정확한 발표 예상시간을 위해 적혀진 문장을 마이크를 통해 읽어주세요.</h4>
                                     <h5 id="temp_text">너의 값진 말들로 희망을 노래하라</h5>
                                     <div class="words"></div>
-                                    <script src="voice.js"></script>
                                 </div>
                                 <div class="modal-footer">
+                                    <script src="voice.js"></script>
                                     <button type="button" id="start_button" class="btn $btn-hover-bg-shade-amount:0%" style="color: rgb(255, 255, 255);
-                                    text-shadow: none; background-color: rgb(70, 211, 89)!important; border-color: rgb(70, 211, 89)!important;" onclick="recognition.start();">시작</button>
+                                    text-shadow: none; background-color: rgb(70, 211, 89)!important; border-color: rgb(70, 211, 89)!important;" onclick="recognition.start(); startSpeech();">시작</button>
                                     <button type="button" id="end_button" class="btn $btn-hover-bg-shade-amount:0%" style="color: rgb(255, 255, 255); 
                                     text-shadow: none; background-color: rgb(211, 70, 70)!important; border-color: rgb(211, 70, 70)!important;" onclick="endSpeech()">종료</button>
                                     <button type="button" class="btn $btn-hover-bg-shade-amount:0%" style="color: rgb(255, 255, 255);

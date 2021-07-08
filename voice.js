@@ -3,6 +3,10 @@ window.SpeechRecognition =
 
 // 인스턴스 생성
 const recognition = new SpeechRecognition();
+let st = 0; let en = 0;
+
+let str = "너의 값진 말들로 희망을 노래하라";
+let str_cnt = str.length; // 공백 포함 글자 수
 
 // true면 음절을 연속적으로 인식하나 false면 한 음절만 기록함
 recognition.interimResults = true;
@@ -39,9 +43,6 @@ recognition.addEventListener("result", (e) => {
     document.querySelector(".para").innerHTML = speechToText + interimTranscript;
 });
 
-let str = document.getElementById('temptext').value;
-let str_cnt = str.length; // 공백 포함 글자 수
-
 function cal(res) {
     const final_res = parseInt(60000 / (res / str_cnt));
     document.getElementById('time_results').innerText = "1분당 " + final_res.toString() + "글자";
@@ -50,8 +51,8 @@ function cal(res) {
 // 음성인식이 끝나면 자동으로 재시작합니다.
 // recognition.addEventListener("end", recognition.start);
 
-let st = 0; let en = 0;
-recognition.addEventListener("start", () => {
+
+recognition.addEventListener("start", () =>  {
     st = new Date();
     console.log("sans");
     $("#start_button").toggle();
