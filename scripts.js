@@ -1,5 +1,5 @@
 function time_for_speech(res) {
-    var char_cnt = document.getElementById('textbox').value.length;
+    var char_cnt = document.getElementById('textbox').value.replace(/(\s*)/g, "").length;
     var char_per_second = res / 60;
     var sec = parseInt(char_cnt / char_per_second);
     var min = parseInt(sec / 60);
