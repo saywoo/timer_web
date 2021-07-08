@@ -43,7 +43,7 @@ recognition.addEventListener("result", (e) => {
 });
 
 function cal(res) {
-    final_res = parseInt(60000 / (res / str_cnt)) - 30;
+    final_res = parseInt(60000 / (res / str_cnt));
     console.log(final_res);
     document.getElementById('time_results').innerText = time_for_speech(final_res);
 }
@@ -56,11 +56,11 @@ recognition.addEventListener("end", () => {
         //$("#loader").toggle();
         //document.getElementById("loader").innerText = "마이크를 인식하지 못했어요. 새로고침 후 다시 시도해주세요.";
         console.log("마이크 입력 안됨");
-        if (final_res > 297) {
+        if (final_res > 400) {
             document.getElementById("card_2_main").innerText = "말하기 속도가 빠른 편이에요.";
             document.getElementById("card_2_sub").innerText = "1분에 약 " + final_res.toString() + "자 정도 말할수 있는 속도에요.";
         }
-        else if (final_res < 243) {
+        else if (final_res < 300) {
             document.getElementById("card_2_main").innerText = "말하기 속도가 느린 편이에요.";
             document.getElementById("card_2_sub").innerText = "1분에 약 " + final_res.toString() + "자 정도 말할수 있는 속도에요.";
         }
@@ -91,11 +91,11 @@ recognition.addEventListener("end", () => {
 
         }
 
-        if (final_res > 297) {
+        if (final_res > 400) {
             document.getElementById("card_2_main").innerText = "말하기 속도가 빠른 편이에요.";
             document.getElementById("card_2_sub").innerText = "1분에 약 " + final_res.toString() + "자 정도 말할수 있는 속도에요.";
         }
-        else if (final_res < 243) {
+        else if (final_res < 300) {
             document.getElementById("card_2_main").innerText = "말하기 속도가 느린 편이에요.";
             document.getElementById("card_2_sub").innerText = "1분에 약 " + final_res.toString() + "자 정도 말할수 있는 속도에요.";
         }
