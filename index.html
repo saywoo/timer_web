@@ -11,13 +11,13 @@
         <title>발표 시간 측정기</title>
         <link rel="stylesheet" href="style.css">
         <script type="text/javascript" src="scripts.js"></script>
+        <script type="text/javascript" src="levenshtein_dist.js"></script>
     </head>
     <body class="d-flex h-100">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"></script>
-
         <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
             <h1 class="container" style="text-align:center; font-weight:bolder;">발표 시간 측정기</h1>
             <h2></h2>
@@ -41,32 +41,29 @@
                     onkeydown="char_count();resize(this)" onkeypress="char_count()" onkeyup="char_count();resize(this)"></textarea> 
                     <h6></h6>
                     <button id="st_btn" class="btn $btn-hover-bg-shade-amount:0%" style="color: rgb(255, 255, 255);
-    text-shadow: none; background-color: rgb(110, 110, 110)!important; border-color: rgb(110, 110, 110)!important;" type="button" data-bs-toggle="modal" data-bs-target="#exampleModalCenter" onclick="$('#end_button').toggle(); $('#loader').toggle();">확인</button>
+    text-shadow: none; background-color: rgb(110, 110, 110)!important; border-color: rgb(110, 110, 110)!important;" type="button" data-bs-toggle="modal" data-bs-target="#exampleModalCenter" onclick="document.getElementById('end_button').style.visibility = 'hidden'; $('#loader').toggle();">확인</button>
                 </div>
             </div>
             <div class="container">
                 <h5 id="loader"></h5>
-                <div class="card-group">
+                <div class="row row-cols-1 row-cols-md-3 g-4"  id="result_card" style="visibility:hidden;">
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">예상 시간</h5>
-                            <p class="card-text" id="time_results">약 0초</p>
-                            <p class="card-text"><small class="text-muted">* 마이크의 상태에 따라 오차가 있을 수 있음</small></p>
+                            <p class="card-text" id="time_results">약 0초</p>                       
                         </div>
                     </div>
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            <h5 class="card-title" id="card_2_main">말하기 속도가 빠른거 같아요</h5>
+                            <p class="card-text" id="card_2_sub">적정 속도는 1분에 270자 정도 말하는 것입니다</p>
+                            <!--<p class="card-text"><small class="text-muted">* 마이크의 상태에 따라 오차가 있을 수 있습니다.</small></p> -->
                         </div>
                     </div>
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                                content. This card has even longer content than the first to show that equal height action.</p>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            <h5 class="card-title" id="card_3_main">발음이 정확해요</h5>
+                            <p class="card-text" id="card_3_sub"></p>
                         </div>
                     </div>
                 </div>
@@ -82,7 +79,7 @@
                     </div>
                     <div class="modal-body">
                         <h5>정확한 발표 예상시간을 위해 적혀진 문장을 마이크를 통해 읽어주세요.</h5>
-                        <h6 id="temp_text">(여기에 텍스트 입력)</h6>
+                        <h6 id="temp_text">살찐 수댕이</h6>
                         <div class="words"></div>
                     </div>
                     <div class="modal-footer">
