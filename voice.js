@@ -2,6 +2,7 @@ window.SpeechRecognition =
     window.SpeechRecognition || window.webkitSpeechRecognition;
 
 const recognition = new SpeechRecognition();
+// 사용할 임시 변수들
 let st = 0; let en = 0;
 var final_res = 0;
 
@@ -10,12 +11,12 @@ let str_cnt = str.length; // 공백 포함 글자 수
 
 // true면 음절을 연속적으로 인식하나 false면 한 음절만 기록함
 recognition.interimResults = true;
-// 값이 없으면 HTML의 <html lang="en">을 참고합니다. ko-KR, en-US
+// 값이 없으면 HTML의 <html lang="ko">을 참고함 (ko-KR, en-US)
 recognition.lang = "ko-KR";
-// true면 음성 인식이 안 끝나고 계속 됩니다.
+// true면 음성 인식이 안 끝나고 계속 작동함
 recognition.continuous = false;
-// 숫자가 작을수록 발음대로 적고, 크면 문장의 적합도에 따라 알맞은 단어로 대체합니다.
-// maxAlternatives가 크면 이상한 단어도 문장에 적합하게 알아서 수정합니다.
+// 숫자가 작을수록 발음대로 적고, 크면 문장의 적합도에 따라 알맞은 단어로 대체함
+// maxAlternatives가 크면 이상한 단어도 문장에 적합하게 알아서 수정함
 recognition.maxAlternatives = 100000;
 
 let p = document.createElement("p");
