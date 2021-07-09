@@ -2,6 +2,7 @@
 Levenshtein distance 알고리즘을 이용해서 두 문자열의 유사도를 cost로 판별해 리턴하는 함수
 cost = 문자열에서 변경, 삽입, 삭제 등의 요소를 해서 고쳐야하는 문자의 수
 */
+
 function getDist(a, b) {
     if (a.length == 0) return b.length;
     if (b.length == 0) return a.length;

@@ -5,6 +5,8 @@ const recognition = new SpeechRecognition();
 // 사용할 임시 변수들
 let st = 0; let en = 0;
 var final_res = 0;
+// 마이크의 사용 유무
+var flag = false;
 
 let str = "적혀진 문장을 마이크를 통해 읽어주세요.";
 let str_cnt = str.length; // 공백 포함 글자 수
@@ -49,9 +51,18 @@ function cal(res) {
     document.getElementById('time_results').innerText = time_for_speech(final_res);
 }
 
+recognition.addEventListener("error", () => {
+    document.getElementById("result_card").style.visibility = "hidden";
+    st = new Date();
+    console.log("인식 시작");
+    $("#start_button").toggle();
+    $("#end_button").toggle();
+});
+
 recognition.addEventListener("end", () => {
     $("#loader").toggle();
-    document.getElementById("result_card").style.visibility = "visible";
+
+    if (flag == true) document.getElementById("result_card").style.visibility = "visible";
 
     if (document.querySelector(".para").innerHTML == "") {
         //$("#loader").toggle();
@@ -107,8 +118,8 @@ recognition.addEventListener("end", () => {
     }   
 });
 
-
 recognition.addEventListener("start", () =>  {
+    flag = true;
     st = new Date();
     console.log("인식 시작");
     $("#start_button").toggle();
@@ -122,6 +133,27 @@ function endSpeech() {
     $("#start_button").toggle();
     $("#st_btn").toggle();
     document.getElementById('loader').innerText = "계산 중...";
+    
+
+    if (flag == false) {
+        document.getElementById("result_card").style.visibility = "visible";
+
+        if (final_res > 400) {
+            document.getElementById("card_2_main").innerText = "말하기 속도가 빠른 편이에요.";
+            document.getElementById("card_2_sub").innerText = "1분에 약 " + final_res.toString() + "자 정도 말할수 있는 속도에요.";
+        }
+        else if (final_res < 300) {
+            document.getElementById("card_2_main").innerText = "말하기 속도가 느린 편이에요.";
+            document.getElementById("card_2_sub").innerText = "1분에 약 " + final_res.toString() + "자 정도 말할수 있는 속도에요.";
+        }
+        else {
+            document.getElementById("card_2_main").innerText = "말하기 속도가 적당해요.";
+            document.getElementById("card_2_sub").innerText = "1분에 약 " + final_res.toString() + "자 정도 말할수 있는 속도에요.";
+        }
+
+        document.getElementById("card_3_main").innerText = "마이크 사용을 거부하거나 마이크가 안되는 거 같아요.";
+        document.getElementById("card_3_sub").innerText = "새로고침 후 다시 시도하거나 마이크 사용을 승인해주세요.";
+    }
 };
 
 // 음성 인식 시작
