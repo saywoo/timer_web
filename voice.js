@@ -67,6 +67,7 @@ recognition.addEventListener("error", () => {
     console.log("인식 시작");
     $("#start_button").toggle();
     $("#end_button").toggle();
+    
 });
 
 // 마이크 인식이 끝날때 동시에 작동되는 핢수
@@ -74,7 +75,7 @@ recognition.addEventListener("end", () => {
 
     if (flag == true) {
         document.getElementById("result_card").style.visibility = "visible";
-        document.getElementById("loader").innerText = "";
+        document.getElementById("loader").style.visibility = "visible";
     }
 
     if (document.querySelector(".para").innerHTML == "") {
@@ -95,7 +96,7 @@ recognition.addEventListener("end", () => {
         }
         document.getElementById("card_3_main").innerText = "발음을 제대로 인식하지 못했어요";
         document.getElementById("card_3_sub").innerText = "새로고침 후 다시 시도해주세요";
-
+        document.getElementById("loader").style.visibility = "hidden";
     }
     else {
         console.log(document.querySelector(".para").innerHTML);
@@ -128,6 +129,7 @@ recognition.addEventListener("end", () => {
             document.getElementById("card_2_main").innerText = "말하기 속도가 적당해요.";
             document.getElementById("card_2_sub").innerText = "1분에 약 " + final_res.toString() + "자 정도 말할수 있는 속도에요.";
         }
+        document.getElementById("loader").style.visibility = "hidden";
     }   
 });
 
@@ -139,6 +141,7 @@ recognition.addEventListener("start", () =>  {
     $("#start_button").toggle();
     $("#end_button").toggle();
     $("#loader").toggle();
+    document.getElementById("loader").style.visibility = "visible";
 });
 
 // 종료 버튼을 눌렀을때 작동하는 함수
@@ -170,7 +173,7 @@ function endSpeech() {
         document.getElementById("card_3_main").innerText = "마이크 사용을 거부하거나 마이크가 안되는 거 같아요.";
         document.getElementById("card_3_sub").innerText = "새로고침 후 다시 시도하거나 마이크 사용을 승인해주세요.";
 
-        $("#loader").toggle();
+        document.getElementById("loader").style.visibility = "hidden";
     }
 
     
