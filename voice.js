@@ -74,7 +74,7 @@ recognition.addEventListener("end", () => {
 
     if (flag == true) {
         document.getElementById("result_card").style.visibility = "visible";
-        document.getElementById("loader").style.visibility = "hidden";
+        document.getElementById("loader").innerText = "";
     }
 
     if (document.querySelector(".para").innerHTML == "") {
